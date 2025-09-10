@@ -38,7 +38,7 @@ export type AppointmentResponse = {
 
 export const fetchAppointments = async (params: { page?: number; pageSize?: number; from?: string; status?: string } = {}): Promise<{ data: Appointment[]; meta: AppointmentMeta }> => {
 	const { page = 1, pageSize = 10, from, status } = params;
-	const queryParams: any = { page, pageSize };
+	const queryParams: Record<string, unknown> = { page, pageSize };
 	if (from) {
 		queryParams.from = from;
 	}
@@ -57,7 +57,6 @@ export const createAppointment = async (payload: { clientId: number; scheduledAt
 	const res = await http.post('/appointments', payload);
 	return res.data as Appointment;
 };
-
 
 export const fetchAppointmentById = async (id: number | string): Promise<Appointment> => {
 	const res = await http.get(`/appointments/${id}`);
@@ -79,5 +78,3 @@ export const cancelAppointment = async (id: number | string): Promise<Appointmen
 	// The API returns the cancelled appointment nested under 'data'
 	return res.data.data as Appointment;
 };
-
-

@@ -31,12 +31,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setToken(storedToken);
           setUser(parsedUser);
         } catch (error) {
+          console.error('Error parsing stored user:', error);
           // Clear invalid stored data
           localStorage.removeItem('access_token');
           localStorage.removeItem('user');
         }
       }
     } catch (error) {
+      console.error('Error checking authentication:', error);
       // Handle localStorage access errors (SSR)
       console.warn('localStorage not available:', error);
     }

@@ -12,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { loginUser } from '@/lib/api/auth';
 import { useAuth } from '@/lib/contexts/auth-context';
 import { Mail, Lock, Eye, EyeOff, Shield, Users, Calendar, Loader2 } from 'lucide-react';
-import Link from 'next/link';
 
 const loginSchema = z.object({
 	email: z.string().email('Please enter a valid email address'),
@@ -24,7 +23,6 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
 	const [showPassword, setShowPassword] = useState(false);
-	const [isDemoMode, setIsDemoMode] = useState(false);
 	const [isRedirecting, setIsRedirecting] = useState(false);
 	const router = useRouter();
 	const { login: authLogin, isAuthenticated, isLoading } = useAuth();
@@ -61,7 +59,6 @@ export default function LoginPage() {
 	};
 
 	const handleDemoLogin = () => {
-		setIsDemoMode(true);
 		setValue('email', 'admin@virtualwellness.com');
 		setValue('password', 'admin123');
 		toast.success('Demo credentials filled! Click Login to continue.');

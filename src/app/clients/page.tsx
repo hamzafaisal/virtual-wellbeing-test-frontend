@@ -8,7 +8,7 @@ import { ERROR_MESSAGES } from '@/lib/constants/messages';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ProtectedRoute } from '@/components/auth/protected-route';
-import { Search, Users, Mail, Phone, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { Search, Users, Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ClientsPage() {
 	const [q, setQ] = useState('');

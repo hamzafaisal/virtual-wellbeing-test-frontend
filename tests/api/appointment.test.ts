@@ -23,8 +23,8 @@ describe('appointments api', () => {
 	it('createAppointment posts payload and returns data', async () => {
 		const mockedPost = http.post as jest.Mock;
 		mockedPost.mockResolvedValueOnce({ data: { id: 'a1', client_id: '1', starts_at: '2025-07-15T09:00:00Z' } });
-		const res = await createAppointment({ clientExternalId: '1', scheduledAt: '2025-07-15T09:00:00Z' });
-		expect(mockedPost).toHaveBeenCalledWith('/appointments', { clientExternalId: '1', scheduledAt: '2025-07-15T09:00:00Z' });
+		const res = await createAppointment({ clientId: 1, scheduledAt: '2025-07-15T09:00:00Z' });
+		expect(mockedPost).toHaveBeenCalledWith('/appointments', { clientId: 1, scheduledAt: '2025-07-15T09:00:00Z' });
 		expect(res.id).toBe('a1');
 	});
 });

@@ -1,14 +1,13 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchAppointments, updateAppointment, cancelAppointment } from '@/lib/api/appointment';
-import { useState, useMemo } from 'react';
+import { fetchAppointments, updateAppointment, cancelAppointment, type Appointment } from '@/lib/api/appointment';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants/messages';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { ProtectedRoute } from '@/components/auth/protected-route';
-import { Plus, Calendar, User, Filter, ChevronLeft, ChevronRight, Eye, X, Settings, Trash2 } from 'lucide-react';
+import { Plus, Calendar, Filter, ChevronLeft, ChevronRight, X, Settings, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AppointmentsPage() {
@@ -19,12 +18,12 @@ export default function AppointmentsPage() {
 
 	// Status change modal state
 	const [statusModalOpen, setStatusModalOpen] = useState(false);
-	const [selectedAppointment, setSelectedAppointment] = useState<any>(null);
+	const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
 	const [newStatus, setNewStatus] = useState<'pending' | 'confirmed' | 'cancelled'>('pending');
 
 	// Cancel appointment modal state
 	const [cancelModalOpen, setCancelModalOpen] = useState(false);
-	const [appointmentToCancel, setAppointmentToCancel] = useState<any>(null);
+	const [appointmentToCancel, setAppointmentToCancel] = useState<Appointment | null>(null);
 
 
 	const qc = useQueryClient();
@@ -79,7 +78,7 @@ export default function AppointmentsPage() {
 	};
 
 	// Status change handlers
-	const openStatusModal = (appointment: any) => {
+	const openStatusModal = (appointment: Appointment) => {
 		setSelectedAppointment(appointment);
 		setNewStatus(appointment.status || 'pending');
 		setStatusModalOpen(true);
@@ -95,7 +94,7 @@ export default function AppointmentsPage() {
 	};
 
 	// Cancel appointment handlers
-	const openCancelModal = (appointment: any) => {
+	const openCancelModal = (appointment: Appointment) => {
 		setAppointmentToCancel(appointment);
 		setCancelModalOpen(true);
 	};

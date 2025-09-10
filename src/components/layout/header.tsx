@@ -17,11 +17,11 @@ export function Header() {
       <div className="flex items-center gap-4 text-gray-800">
         <div className="size-8 text-[var(--primary-color)]">
           <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path clipRule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fillRule="evenodd"></path>
+            <path clipRule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fillRule="evenodd" />
           </svg>
         </div>
         <h2 className="text-xl font-bold leading-tight tracking-tight text-gray-900">
-        Virtual Wellbeing
+          Virtual Wellbeing
         </h2>
       </div>
       <div className="flex items-center gap-4">

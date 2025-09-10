@@ -6,15 +6,14 @@ import { useState, useMemo } from 'react';
 import { toast } from 'sonner';
 import { ERROR_MESSAGES } from '@/lib/constants/messages';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { ProtectedRoute } from '@/components/auth/protected-route';
-import { Search, Calendar, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import Link from 'next/link';
 
 export default function UpcomingAppointmentsPage() {
 	const [page, setPage] = useState(1);
 	const [pageSize, setPageSize] = useState(10);
-	const [searchQuery, setSearchQuery] = useState('');
+	const [searchQuery] = useState('');
 
 	// Get current date/time as ISO string for the 'from' parameter - memoized to prevent infinite loops
 	const currentDateTime = useMemo(() => new Date().toISOString(), []);

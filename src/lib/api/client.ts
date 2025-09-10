@@ -28,7 +28,7 @@ export type ClientResponse = {
 
 export const fetchClients = async (params: { q?: string; page?: number; pageSize?: number } = {}): Promise<{ data: Client[]; meta: ClientMeta }> => {
 	const { q = '', page = 1, pageSize = 10 } = params;
-	const queryParams: any = { page, pageSize };
+	const queryParams: Record<string, unknown> = { page, pageSize };
 	if (q) {
 		queryParams.q = q;
 	}

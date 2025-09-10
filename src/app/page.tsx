@@ -2,7 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { fetchDashboard } from '@/lib/api/dashboard';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import Link from 'next/link';
@@ -169,9 +168,6 @@ export default function Home() {
                         </p>
                         <p className="text-sm text-gray-500">
                           {new Date(appointment.scheduledAt).toLocaleDateString()}
-                          {/* ensure deterministic hydration */}
-                          {/* @ts-ignore */}
-                          {/* eslint-disable-next-line react/no-unknown-property */}
                         </p>
                       </div>
                     </div>

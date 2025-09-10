@@ -1,6 +1,12 @@
 import axios, { AxiosError } from 'axios';
 import { getApiBaseUrl } from '@/lib/config/env';
 
+type ErrorResponseData = {
+	message?: string;
+	code?: string;
+	details?: unknown;
+};
+
 export const http = axios.create({
 	baseURL: getApiBaseUrl(),
 	headers: { 'Accept': 'application/json' }
@@ -36,7 +42,7 @@ http.interceptors.response.use(
 	(response) => response,
 	(error: AxiosError) => {
 		const status = error.response?.status;
-		const data = error.response?.data as any;
+		const data = error.response?.data as ErrorResponseData;
 		const message = data?.message || error.message || 'Request failed';
 		const code = (data?.code as string) || undefined;
 		const requestUrl = (error.config?.url as string) || '';
