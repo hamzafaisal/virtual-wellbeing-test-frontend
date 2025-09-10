@@ -156,9 +156,3 @@ Run tests:
 ```
 npm test
 ```
-
-Troubleshooting
----------------
-- Windows port error (`%PORT% is not a non-negative number`): set the env var before running `npm run dev`.
-- Unauthorized after login: ensure backend is running and `NEXT_PUBLIC_API_BASE_URL` is correct.
-- Clear auth: remove `access_token` and `user` from localStorage and clear the `access_token` cookie.
