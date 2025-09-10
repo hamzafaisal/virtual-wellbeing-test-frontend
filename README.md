@@ -12,6 +12,7 @@ Overview
 - Fully typed with TypeScript, validated forms with Zod + React Hook Form
 - Sleek toast notifications via Sonner
 
+
 Tech Stack
 ----------
 - Next.js (App Router) + TypeScript
